@@ -1,0 +1,24 @@
+server:
+  port: 3000
+
+spring:
+  application:
+    name: study-auth
+  redis:
+    password: sykean123
+    host: pig-redis
+  cloud:
+    nacos:
+      discovery:
+        server-addr: ${NACOS-HOST:pig-register}:${NACOS-PORT:8848}
+      config:
+        server-addr: ${spring.cloud.nacos.discovery.server-addr}
+        prefix: ${spring.application.name}
+        file-extension: yml
+        shared-configs:
+          - application-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
+  main:
+    allow-bean-definition-overriding: true
+  profiles:
+    active: dev
+

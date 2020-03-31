@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.slincloud.common.security.service.MyUserDetailsServiceImpl
+

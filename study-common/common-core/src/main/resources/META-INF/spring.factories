@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.slincloud.common.core.config.RedisTemplateConfig,\
+  com.slincloud.common.core.config.RestTemplateConfig

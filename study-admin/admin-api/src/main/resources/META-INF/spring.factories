@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.slincloud.admin.api.feign.fallback.RemoteUserServiceFallbackImpl,\
+  com.slincloud.admin.api.feign.factory.RemoteUserServiceFallbackFactory
