@@ -1,6 +1,5 @@
 server:
   port: 9999
-
 spring:
   application:
     name: study-gateway
@@ -10,9 +9,12 @@ spring:
         server-addr: ${NACOS-HOST:pig-register}:${NACOS-PORT:8848}
       config:
         server-addr: ${spring.cloud.nacos.discovery.server-addr}
+        prefix: ${spring.application.name}
         file-extension: yml
         shared-configs:
           - application-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
+  main:
+    allow-bean-definition-overriding: true
   profiles:
     active: dev
 
