@@ -20,7 +20,6 @@ package com.slincloud.admin.biz.service.impl;
 
 import cn.hutool.core.collection.CollUtil;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
-import com.baomidou.mybatisplus.extension.api.R;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 
 import com.slincloud.admin.api.dto.MenuTree;
@@ -34,6 +33,7 @@ import com.slincloud.admin.biz.service.SysMenuService;
 import com.slincloud.common.core.constant.CacheConstants;
 import com.slincloud.common.core.constant.CommonConstants;
 import com.slincloud.common.core.constant.enums.MenuTypeEnum;
+import com.slincloud.common.core.util.R;
 import lombok.AllArgsConstructor;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;

@@ -19,11 +19,11 @@
 package com.slincloud.admin.biz.service;
 
 
-import com.baomidou.mybatisplus.extension.api.R;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.slincloud.admin.api.dto.MenuTree;
 import com.slincloud.admin.api.entity.SysMenu;
 import com.slincloud.admin.api.vo.MenuVO;
+import com.slincloud.common.core.util.R;
 
 import java.util.List;
 import java.util.Set;
