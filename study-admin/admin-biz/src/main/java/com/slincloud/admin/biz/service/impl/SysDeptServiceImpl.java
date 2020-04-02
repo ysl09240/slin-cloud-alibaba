@@ -28,6 +28,7 @@ import com.slincloud.admin.api.vo.TreeUtil;
 import com.slincloud.admin.biz.service.SysDeptRelationService;
 import com.slincloud.admin.biz.mapper.SysDeptMapper;
 import com.slincloud.admin.biz.service.SysDeptService;
+import com.slincloud.common.security.util.SecurityUtils;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
@@ -129,8 +130,7 @@ public class SysDeptServiceImpl extends ServiceImpl<SysDeptMapper, SysDept> impl
 	 */
 	@Override
 	public List<DeptTree> listCurrentUserDeptTrees() {
-		Integer deptId =0;
-//		Integer deptId = SecurityUtils.getUser().getDeptId();
+		Integer deptId = SecurityUtils.getUser().getDeptId();
 		List<Integer> descendantIdList = sysDeptRelationService
 			.list(Wrappers.<SysDeptRelation>query().lambda()
 				.eq(SysDeptRelation::getAncestor, deptId))

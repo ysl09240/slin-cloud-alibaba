@@ -28,6 +28,7 @@ import com.slincloud.admin.api.entity.SysUser;
 import com.slincloud.admin.biz.service.SysUserService;
 //import com.slincloud.common.security.util.SecurityUtils;
 import com.slincloud.common.security.annotation.Inner;
+import com.slincloud.common.security.util.SecurityUtils;
 import io.swagger.annotations.Api;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -52,9 +53,9 @@ public class UserController {
 	 * @return 用户信息
 	 */
 	@GetMapping(value = {"/info"})
+	@Inner
 	public R info() {
-//		String username = SecurityUtils.getUser().getUsername();
-		String username = "";
+		String username = SecurityUtils.getUser().getUsername();
 		SysUser user = userService.getOne(Wrappers.<SysUser>query()
 			.lambda().eq(SysUser::getUsername, username));
 		if (user == null) {

@@ -45,15 +45,17 @@ public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter {
 	@SneakyThrows
 	protected void configure(HttpSecurity http) {
 		http.authorizeRequests()
-                .antMatchers("/**")
-                .authenticated()
+				.antMatchers(
+						"/token/**",
+						"/actuator/**",
+						"/mobile/**").permitAll()
 				.anyRequest().authenticated()
                 .and().csrf().disable();
 	}
 
 	@Override
 	public void configure(WebSecurity web) {
-		web.ignoring().antMatchers("/css/**","/user/info/**");
+		web.ignoring().antMatchers("/css/**");
 	}
 
 	@Bean

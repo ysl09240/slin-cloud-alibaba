@@ -25,6 +25,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.slincloud.common.core.constant.CommonConstants;
 import com.slincloud.common.core.constant.SecurityConstants;
 import com.slincloud.common.core.exception.ValidateCodeException;
+import com.slincloud.common.core.util.WebUtils;
+import com.slincloud.gateway.config.IgnoreClientConfiguration;
 import lombok.AllArgsConstructor;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
@@ -46,7 +48,7 @@ import reactor.core.publisher.Mono;
 @Component
 @AllArgsConstructor
 public class ValidateCodeGatewayFilter extends AbstractGatewayFilterFactory {
-//	private final IgnoreClientConfiguration ignoreClient;
+	private final IgnoreClientConfiguration ignoreClient;
 	private final ObjectMapper objectMapper;
 	private final RedisTemplate redisTemplate;
 
@@ -69,10 +71,10 @@ public class ValidateCodeGatewayFilter extends AbstractGatewayFilterFactory {
 
 			// 终端设置不校验， 直接向下执行
 			try {
-//				String[] clientInfos = WebUtils.getClientId(request);
-//				if (ignoreClient.getClients().contains(clientInfos[0])) {
-//					return chain.filter(exchange);
-//				}
+				String[] clientInfos = WebUtils.getClientId(request);
+				if (ignoreClient.getClients().contains(clientInfos[0])) {
+					return chain.filter(exchange);
+				}
 
 				//校验验证码
 				checkCode(request);
